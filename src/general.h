@@ -23,4 +23,32 @@
 #include <iostream>
 #include "texts_en.h"
 
+class Identifiable
+  {
+  };
+  
+class Nameable
+  {
+  };
+  
+class Describable
+  {
+  };
+  
+class NameableIdentifiable: public Nameable, public Identifiable
+  {
+  };
+  
+class NameableDescribable: public Nameable, public Describable
+  {
+  };
+  
+class DescribableIdentifiable: public Describable, public Identifiable
+  {
+  };
+
+class NameableDescribableIdentifiable:public Nameable, public Identifiable, public Describable
+  {
+  };
+  
 #endif
