@@ -1,22 +1,22 @@
 CXX=c++
-CXXFLAGS=-pedantic -Wall -std=c++11 -g -O2
+CXX_FLAGS=-pedantic -Wall -std=c++11 -g -O2
 
-SRCDIR=src
-DSTDIR=bin
-CPP_FILES := $(wildcard $(SRCDIR)/*.cc)
-OBJ_FILES := $(addprefix $(SRCDIR)/,$(notdir $(CPP_FILES:.cpp=.o)))
+SRC_DIR=src
+BIN_DIR=bin
+CPP_FILES := $(wildcard $(SRC_DIR)/*.cc)
+OBJ_FILES := $(addprefix $(SRC_DIR)/,$(notdir $(CPP_FILES:.cpp=.o)))
 
 UNAME := $(shell uname)
 ifeq ($(UNAME), Linux)
-BIN=$(DSTDIR)/rpg
+BIN=$(BIN_DIR)/rpg
 else
-BIN=$(DSTDIR)/rpg.exe
+BIN=$(BIN_DIR)/rpg.exe
 endif
 
 all: $(BIN)
 
 $(BIN): $(OBJ_FILES)
-	g++ $(CXXFLAGS) -o $@ $^
+	g++ $(CXX_FLAGS) -o $@ $^
 
 obj/%.o: src/%.cc
-	g++ $(CXXFLAGS) -c -o $@ $<
+	g++ $(CXX_FLAGS) -c -o $@ $<
