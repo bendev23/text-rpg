@@ -11,6 +11,5 @@ int main()
   {
     Being my_being;
     cout << "Hello, this will be an RPG." << endl;
-	//Commmit Test
     return 0;
   }
