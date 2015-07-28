@@ -1,8 +1,5 @@
-#ifndef BEING_H
-#define BEING_H
-
-/** \file being.h
- * 
+/** \file general.cc
+ *
  */
 
 /*
@@ -22,22 +19,4 @@
 
 #include "general.h"
 
-class Being
-  {
-    public:
-      Being();
-  };
-
-class Humanoid: public Being
-  {
-  };
-  
-class Beast: public Being
-  {
-  };
-  
-class Player: public Humanoid
-  {
-  };
-  
-#endif
+using namespace std;
