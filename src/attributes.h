@@ -1,5 +1,8 @@
-/** \file rpginstance.cc
- *
+#ifndef ATTRIBUTES_H
+#define ATTRIBUTES_H
+
+/** \file attributes.h
+ * 
  */
 
 /*
@@ -17,7 +20,22 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "being.h"
-#include "rpginstance.h"
+class BasicAttributeValues
+  {
+    protected:
+      int current_health, current_energy;
+  };
 
-using namespace std;
+class BasicAttributes
+  {
+    protected:
+      int max_health, max_energy, armor;
+  };
+
+class AdvancedAttributes
+  {
+    protected:
+      int physical_strength, will_power, agility; //(vkortelainen) Some more might be added.
+  };
+
+#endif
