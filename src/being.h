@@ -21,18 +21,41 @@
 */
 
 #include "general.h"
+#include "attributes.h"
 #include "rpginstance.h"
 
 class Being
   {
+    protected:
+      int gender; //(vkortelainen) Do more than 2 genders exist within this game?
+      BasicAttributeValues basic_attribute_values;
+      //AbilityClass abilities[];
+      //BeingScripts scripts;
     public:
       Being();
   };
 
+enum HumanoidStatus
+  {
+    normal,
+    protected,
+    unkillable
+  };
+
 class Humanoid: public Being
   {
+    protected:
+      BasicAttributes basic_attributes;
+      AdvancedAttributes advanced_attributes;
+      int level;
+      //Equipment equipment;
+      HumanoidStatus status;
+      //Dialog* current_dialog; //(vkortelainen) Unclear if pointer or not.
+      //ActivityPlan activity_plan;
     public:
       Humanoid();
+      
+      int get_/*worth the*/weight();
   };
   
 class Beast: public Being, public RPGInstance<BeingClass>
