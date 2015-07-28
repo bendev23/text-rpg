@@ -18,5 +18,6 @@
 */
 
 #include "being.h"
+#include "rpginstance.h"
 
 using namespace std;
