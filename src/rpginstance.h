@@ -1,5 +1,8 @@
-/** \file general.cc
- *
+#ifndef RPGINSTANCE_H
+#define RPGINSTANCE_H
+
+/** \file rpginstance.h
+ * 
  */
 
 /*
@@ -18,35 +21,58 @@
 */
 
 #include "general.h"
+#include "rpginstance.h"
+#include "being.h"
 
-using namespace std;
+class RPGClass
+  {
+  };
 
-void Identifiable::set_id(id_type new_id)
+class BeingClass: public RPGClass
   {
-    this->id = new_id;
-  }
+  };
   
-id_type Identifiable::get_id()
+class BeastClass: public BeingClass
   {
-    return this->id;
-  }
+  };
   
-void Nameable::set_name(string name)
+class HumanoidClass: public BeingClass
   {
-    this->name = name;
-  }
+  };
   
-string Nameable::get_name()
+class WorldObjectClass: public RPGClass
   {
-    return this->name;
-  }
+  };
   
-void Describable::set_description(string name)
+class ItemClass: public RPGClass
   {
-    this->description = description;
-  }
+  };
+
+class BookClass: public ItemClass
+  {
+  };
   
-string Describable::get_description()
+class ConsumableClass: public ItemClass
   {
-    return this->description;
-  }
+  };
+  
+class EquipableClass: public ItemClass
+  {
+  };
+  
+class Questitem: public ItemClass
+  {
+  };
+  
+template <class T>
+class RPGInstance
+  {
+    protected:
+      T *rpg_class;
+
+    public:
+      void set_class(T *new_class);
+      T *get_class();
+  };
+  
+#endif

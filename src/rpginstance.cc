@@ -1,4 +1,4 @@
-/** \file general.cc
+/** \file rpginstance.cc
  *
  */
 
@@ -17,36 +17,6 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "general.h"
+#include "being.h"
 
 using namespace std;
-
-void Identifiable::set_id(id_type new_id)
-  {
-    this->id = new_id;
-  }
-  
-id_type Identifiable::get_id()
-  {
-    return this->id;
-  }
-  
-void Nameable::set_name(string name)
-  {
-    this->name = name;
-  }
-  
-string Nameable::get_name()
-  {
-    return this->name;
-  }
-  
-void Describable::set_description(string name)
-  {
-    this->description = description;
-  }
-  
-string Describable::get_description()
-  {
-    return this->description;
-  }

@@ -21,6 +21,7 @@
 */
 
 #include "general.h"
+#include "rpginstance.h"
 
 class Being
   {
@@ -30,13 +31,15 @@ class Being
 
 class Humanoid: public Being
   {
+    public:
+      Humanoid();
   };
   
-class Beast: public Being
+class Beast: public Being, public RPGInstance<BeingClass>
   {
   };
   
-class Player: public Humanoid
+class Player: public Humanoid, public RPGInstance<HumanoidClass>
   {
   };
   

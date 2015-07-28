@@ -25,3 +25,7 @@ Being::Being()
   {
     cout << "Hello, I'm a being." << endl; // just testing, this class will be abstract later
   }
+  
+Humanoid::Humanoid(): Being()
+  {
+  }

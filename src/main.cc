@@ -1,5 +1,5 @@
 /** \file main.cc
- * 
+ *
  */
 
 /*
@@ -22,10 +22,10 @@
 
 using namespace std;
 
-int main()
-  {
+int main ()
+{
     Being my_being;
     cout << "Hello, this will be an RPG." << endl;
-	//Commmit Test
+    //Commmit Test
     return 0;
-  }
+}

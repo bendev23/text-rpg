@@ -21,18 +21,49 @@
 */
 
 #include <iostream>
+#include <string>
 #include "texts_en.h"
+
+// forward declarations, because of circular includes
+class RPGClass;
+class BeingClass;
+class BeastClass;
+class HumanoidClass;
+class WorldObjectClass;
+class ItemClass;
+class BookClass;
+class ConsumableClass;
+class EquipableClass;
+class Questitem;
+template <class T> class RPGInstance;
+
+typedef unsigned int id_type;
 
 class Identifiable
   {
+    protected:
+      id_type id;
+    public:  
+      void set_id(id_type new_id);
+      id_type get_id();
   };
   
 class Nameable
   {
+    protected:
+      std::string name;
+    public:
+      virtual void set_name(std::string name);
+      virtual std::string get_name();
   };
   
 class Describable
   {
+    protected:
+      std::string description;
+    public:
+      virtual void set_description(std::string description);
+      virtual std::string get_description();
   };
   
 class NameableIdentifiable: public Nameable, public Identifiable
