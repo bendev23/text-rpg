@@ -25,17 +25,6 @@
 #include "texts_en.h"
 
 // forward declarations, because of circular includes
-class RPGClass;
-class BeingClass;
-class BeastClass;
-class HumanoidClass;
-class WorldObjectClass;
-class ItemClass;
-class BookClass;
-class ConsumableClass;
-class EquipableClass;
-class Questitem;
-template <class T> class RPGInstance;
 
 typedef unsigned int id_type;
 

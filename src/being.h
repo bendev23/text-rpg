@@ -37,9 +37,9 @@ class Being
 
 enum HumanoidStatus
   {
-    normal,
-    protected,
-    unkillable
+    HUMANOID_STATUS_NORMAL,
+    HUMANOID_STATUS_PROTECTED,
+    HUMANOID_STATUS_UNKILLABLE
   };
 
 class Humanoid: public Being
@@ -55,7 +55,7 @@ class Humanoid: public Being
     public:
       Humanoid();
       
-      int get_/*worth the*/weight();
+      int get_weight();
   };
   
 class Beast: public Being, public RPGInstance<BeingClass>
