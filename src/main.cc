@@ -19,13 +19,17 @@
 
 #include "general.h"
 #include "being.h"
+#include "game.h"
 
 using namespace std;
 
 int main ()
 {
-    Being my_being;
-    cout << "Hello, this will be an RPG." << endl;
-    //Comment added again
-    return 0;
+  CommandLineInterface interface;
+  interface.write_message("Hello, this will be an RPG.",true);
+  Being my_being;
+  cout << interface.confirm() << endl;
+  cout << interface.read_int() << endl;
+  cout << interface.read_float() << endl;
+  return 0;
 }

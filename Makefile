@@ -21,3 +21,6 @@ $(BIN): $(OBJ_FILES)
 
 obj/%.o: src/%.cc
 	g++ $(CXX_FLAGS) -c -o $@ $<
+
+run:
+	./bin/rpg

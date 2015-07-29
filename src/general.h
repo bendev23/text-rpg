@@ -24,7 +24,7 @@
 #include <string>
 #include "texts_en.h"
 
-// forward declarations, because of circular includes
+#define ENGINE_VERSION "0.0"   // this will hold the engine version later
 
 typedef unsigned int id_type;
 

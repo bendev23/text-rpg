@@ -16,4 +16,12 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define STRING_CONFIRMATION "Please confirm this action. (yes/no)"
+#define STRING_CONFIRMATION_YES "yes"
+#define STRING_CONFIRMATION_NO "no"
+#define STRING_PROMPT_STRING "Please enter a text"
+#define STRING_PROMPT_INT "Please enter an integer number"
+#define STRING_PROMPT_FLOAT "Please enter a decimal number"
+#define STRING_INVALID_VALUE_ENTERED "You entered an invalid value."
+
 #endif
