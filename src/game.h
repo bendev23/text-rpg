@@ -51,8 +51,11 @@ class CommandLineInterface
     protected:
       unsigned int line_length;           // a hint for the class, says how long one command-line line is
     
+	  int string_to_int(std::string input, bool &success);
+	  float string_to_float(std::string input, bool &success);
+	  
     public:
-      /**
+  	  /**
        * Writes out given message.
        * 
        * @param message message to be written

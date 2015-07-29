@@ -21,6 +21,28 @@
 
 using namespace std;
 
+int CommandLineInterface::string_to_int(string input, bool &success)
+  {
+	int result;
+	char *endptr;
+	
+	result = strtol(input.c_str(),&endptr,10);
+	success = endptr != input.c_str();
+	
+	return result;
+  }
+
+float CommandLineInterface::string_to_float(string input, bool &success)
+  {
+	double result;
+	char *endptr;
+	
+	result = strtod(input.c_str(),&endptr);
+	success = endptr != input.c_str();
+	
+	return (float) result;
+  }
+  
 void CommandLineInterface::write_message(string message, bool new_line)
   {
     cout << message;
@@ -51,29 +73,22 @@ string CommandLineInterface::read_string()
       
 int CommandLineInterface::read_int()
   {
-    bool do_break;
+    bool success;
     int result;
     
     while (true)
       {
-        do_break = true;
         cout << STRING_PROMPT_INT << ": ";
     
         string line;
         getline(cin, line);
     
-        try
-          {
-            result = stoi(line);
-          }
-        catch (exception& e)
-          {
-            cout << STRING_INVALID_VALUE_ENTERED << endl;
-            do_break = false;
-          }
-          
-        if (do_break)
+        result = this->string_to_int(line,success);
+		
+		if (success)
           break;
+	    else
+          cout << STRING_INVALID_VALUE_ENTERED << endl;
       }
     
     return result;
@@ -81,29 +96,22 @@ int CommandLineInterface::read_int()
 
 float CommandLineInterface::read_float()
   {
-    bool do_break;
+    bool success;
     float result;
     
     while (true)
       {
-        do_break = true;
         cout << STRING_PROMPT_FLOAT << ": ";
     
         string line;
         getline(cin, line);
     
-        try
-          {
-            result = stof(line);
-          }
-        catch (exception& e)
-          {
-            cout << STRING_INVALID_VALUE_ENTERED << endl;
-            do_break = false;
-          }
-          
-        if (do_break)
+	    result = this->string_to_float(line,success);
+	
+        if (success)
           break;
+	    else
+          cout << STRING_INVALID_VALUE_ENTERED << endl;
       }
     
     return result;

@@ -16,7 +16,6 @@ endif
 all: $(BIN)
 
 $(BIN): $(OBJ_FILES)
-	mkdir -p bin
 	g++ $(CXX_FLAGS) -o $@ $^
 
 obj/%.o: src/%.cc

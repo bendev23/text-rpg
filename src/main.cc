@@ -27,9 +27,10 @@ int main ()
 {
   CommandLineInterface interface;
   interface.write_message("Hello, this will be an RPG.",true);
+  
   Being my_being;
   cout << interface.confirm() << endl;
   cout << interface.read_int() << endl;
-  cout << interface.read_float() << endl;
+  cout << interface.read_float() << endl; 
   return 0;
 }

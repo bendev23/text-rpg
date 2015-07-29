@@ -22,6 +22,7 @@
 
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 #include "texts_en.h"
 
 #define ENGINE_VERSION "0.0"   // this will hold the engine version later
