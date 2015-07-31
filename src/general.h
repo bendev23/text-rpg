@@ -22,12 +22,17 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include <stdlib.h>
 #include "texts_en.h"
 
 #define ENGINE_VERSION "0.0"   // this will hold the engine version later
+#define DEFAULT_LINE_LENGTH 50
 
 typedef unsigned int id_type;
+
+int string_to_int(std::string input, bool &success);      // these functions exist because stoi and stof can't be used due to gcc bug on Windows
+float string_to_float(std::string input, bool &success);
 
 class Identifiable
   {

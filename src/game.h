@@ -50,12 +50,11 @@ class CommandLineInterface
   {
     protected:
       unsigned int line_length;           // a hint for the class, says how long one command-line line is
-    
-	  int string_to_int(std::string input, bool &success);
-	  float string_to_float(std::string input, bool &success);
-	  
+  
     public:
-  	  /**
+     CommandLineInterface();
+      
+     /**
        * Writes out given message.
        * 
        * @param message message to be written
@@ -97,6 +96,24 @@ class CommandLineInterface
        */
       
       float read_float();
+      
+      /**
+       * Prints a horizontal text separator.
+       */
+      
+      void write_separator();
+      
+      /**
+       * Prints a vector of strings as a table with given number
+       * of columns.
+       * 
+       * @param content vector of strings to fill the table with (left to right,
+       *   top to bottom)
+       * @param columns number of table columns
+       * @param print_head if true, the first row will be printed as table head
+       */
+      
+      void write_table(std::vector<std::string> content, unsigned int columns, bool print_head=true);
   };
   
 #endif

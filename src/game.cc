@@ -20,29 +20,12 @@
 #include "game.h"
 
 using namespace std;
-
-int CommandLineInterface::string_to_int(string input, bool &success)
-  {
-	int result;
-	char *endptr;
-	
-	result = strtol(input.c_str(),&endptr,10);
-	success = endptr != input.c_str();
-	
-	return result;
-  }
-
-float CommandLineInterface::string_to_float(string input, bool &success)
-  {
-	double result;
-	char *endptr;
-	
-	result = strtod(input.c_str(),&endptr);
-	success = endptr != input.c_str();
-	
-	return (float) result;
-  }
   
+CommandLineInterface::CommandLineInterface()
+  {
+    this->line_length = DEFAULT_LINE_LENGTH;
+  }
+
 void CommandLineInterface::write_message(string message, bool new_line)
   {
     cout << message;
@@ -83,11 +66,11 @@ int CommandLineInterface::read_int()
         string line;
         getline(cin, line);
     
-        result = this->string_to_int(line,success);
-		
-		if (success)
+        result = string_to_int(line,success);
+
+        if (success)
           break;
-	    else
+        else
           cout << STRING_INVALID_VALUE_ENTERED << endl;
       }
     
@@ -106,13 +89,66 @@ float CommandLineInterface::read_float()
         string line;
         getline(cin, line);
     
-	    result = this->string_to_float(line,success);
-	
+        result = string_to_float(line,success);
+
         if (success)
           break;
-	    else
+        else
           cout << STRING_INVALID_VALUE_ENTERED << endl;
       }
     
     return result;
+  }
+  
+void CommandLineInterface::write_separator()
+  {
+    unsigned int i;
+    
+    for (i = 0; i < this->line_length; i++)
+      cout << "_";
+    
+    cout << endl;
+  }
+  
+void CommandLineInterface::write_table(vector<string> content, unsigned int columns, bool print_head)
+  {
+    unsigned int greatest_length, remaining_length, spaces_between_columns;
+    unsigned int i, j;
+    
+    spaces_between_columns = 2;
+    greatest_length = 0;
+    
+    for (i = 0; i < content.size(); i++)
+      if (content[i].length() > greatest_length)
+        greatest_length = content[i].length();
+    
+    for (i = 0; i < content.size(); i++)
+      {
+        cout << content[i];
+        
+        // fill the remaining spaces:
+        remaining_length = greatest_length - content[i].length();
+        
+        for (j = 0; j < remaining_length; j++)
+          cout << " ";
+        
+        if ((i + 1) % columns == 0)  // last column => new line
+          {
+            cout << endl;
+          
+            if (i == columns - 1 && print_head)  // head separator
+              {
+                for (j = 0; j < (columns - 1) * (greatest_length + spaces_between_columns) + greatest_length; j++)
+                  cout << "-";
+                  
+                cout << endl;
+              }
+          }
+        else                         // not last column => spaces
+          {
+            for (j = 0; j < spaces_between_columns; j++)
+              cout << " ";
+          }
+      }
+    
   }

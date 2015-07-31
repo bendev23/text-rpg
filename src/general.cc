@@ -21,6 +21,28 @@
 
 using namespace std;
 
+int string_to_int(string input, bool &success)
+  {
+    int result;
+    char *endptr;
+        
+    result = strtol(input.c_str(),&endptr,10);
+    success = endptr != input.c_str();
+        
+    return result;
+  }
+
+float string_to_float(string input, bool &success)
+  {
+    double result;
+    char *endptr;
+        
+    result = strtod(input.c_str(),&endptr);
+    success = endptr != input.c_str();
+        
+    return (float) result;
+  }
+
 void Identifiable::set_id(id_type new_id)
   {
     this->id = new_id;
