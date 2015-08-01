@@ -24,6 +24,11 @@
 #include <string>
 #include <vector>
 #include <stdlib.h>
+#include <iostream>
+#include <sstream>
+#include <algorithm>
+#include <iterator>
+
 #include "texts_en.h"
 
 #define ENGINE_VERSION "0.0"   // this will hold the engine version later
@@ -33,6 +38,12 @@ typedef unsigned int id_type;
 
 int string_to_int(std::string input, bool &success);      // these functions exist because stoi and stof can't be used due to gcc bug on Windows
 float string_to_float(std::string input, bool &success);
+
+/**
+ * Splits given string by spaces.
+ */
+
+std::vector<std::string> string_split(std::string input, char delim=' ');
 
 class Identifiable
   {

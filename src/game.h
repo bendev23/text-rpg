@@ -23,6 +23,19 @@
 #include "general.h"
 
 /**
+ * How long text will be aligned to the maximum
+ * line width.
+ */
+
+typedef enum
+  {
+    TEXT_ALIGN_NONE,    ///< no line breaks
+    TEXT_ALIGN_BREAK,   ///< the line is broken (even mid-word) when the maximum line length is reached
+    TEXT_ALIGN_LEFT,    ///< if the word is over the line, a line break is inserted instead
+    TEXT_ALIGN_BLOCK    ///< effort is made to make all lines the same length
+  } TextAlignType;
+
+/**
  * Represents the game engine. Communicates with the player using
  * interface class and executes appropriate actions on the game world.
  */
@@ -50,6 +63,7 @@ class CommandLineInterface
   {
     protected:
       unsigned int line_length;           // a hint for the class, says how long one command-line line is
+      TextAlignType text_align;
   
     public:
      CommandLineInterface();
@@ -114,6 +128,17 @@ class CommandLineInterface
        */
       
       void write_table(std::vector<std::string> content, unsigned int columns, bool print_head=true);
+      
+      /**
+       * Prints a list of choices for the user to make. The user is
+       * repeatedly prompted to make the choice until a valid choice
+       * is entered.
+       * 
+       * @param choices list of string choices to choose from
+       * @return number of choice, starting with 0
+       */
+      
+      unsigned int write_choice(std::vector<std::string> choices);
   };
   
 #endif

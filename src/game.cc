@@ -24,14 +24,79 @@ using namespace std;
 CommandLineInterface::CommandLineInterface()
   {
     this->line_length = DEFAULT_LINE_LENGTH;
+    this->text_align = TEXT_ALIGN_LEFT;
   }
 
 void CommandLineInterface::write_message(string message, bool new_line)
-  {
-    cout << message;
+  { 
+    unsigned int i;
+    unsigned int current_length;
+    unsigned int length_to_add;
+    bool first_word;                 // first word of the line
+    vector<string> message_split;
+    
+    switch (this->text_align)
+      {
+        case TEXT_ALIGN_LEFT:
+          message_split = string_split(message);
+          current_length = 0;
+          first_word = true;     
+          
+          for (i = 0; i < message_split.size(); i++)
+            {
+              length_to_add = message_split[i].length() + 1;
+              
+              if (first_word || current_length + length_to_add <= this->line_length)
+                {
+                  cout << message_split[i] << " ";
+                  current_length += length_to_add;
+                  first_word = false;
+                }
+              else
+                {
+                  cout << endl;
+                  current_length = 0;
+                  first_word = true;
+                }
+            }
+            
+          break;
+          
+        case TEXT_ALIGN_BLOCK:
+          // TODO
+          break;
+          
+        case TEXT_ALIGN_BREAK:
+          current_length = 0;
+          
+          for (i = 0; i < message.size(); i++)
+            {
+              if (current_length >= this->line_length)
+                {
+                  cout << endl;
+                  current_length = 0;
+                }
+                
+              cout << message[i];
+              current_length++;
+            }
+            
+          break;
+          
+        case TEXT_ALIGN_NONE:
+        default:
+          cout << message;
+          break;
+      }
     
     if (new_line)
       cout << endl;
+  }
+  
+unsigned int write_choice(std::vector<std::string> choices)
+  {
+    // TODO
+    return 0;
   }
   
 bool CommandLineInterface::confirm()

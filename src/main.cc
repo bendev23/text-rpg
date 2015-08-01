@@ -26,32 +26,6 @@ using namespace std;
 int main ()
 {
   CommandLineInterface interface;
-  interface.write_message("Hello, this will be an RPG.",true);
-  interface.write_separator();
-  
-  vector<string> test_vector;
-  
-  test_vector.push_back("name");
-  test_vector.push_back("attribute1");
-  test_vector.push_back("attribute2");
-  test_vector.push_back("something");
-  
-  test_vector.push_back("Joe");
-  test_vector.push_back("15");
-  test_vector.push_back("250");
-  test_vector.push_back("no");
-  
-  test_vector.push_back("Marry");
-  test_vector.push_back("2");
-  test_vector.push_back("750");
-  test_vector.push_back("yes");
-  
-  test_vector.push_back("Sam");
-  test_vector.push_back("5");
-  test_vector.push_back("10");
-  test_vector.push_back("no");
-  
-  interface.write_table(test_vector, 4, true);
-  
+  interface.write_message("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",true);
   return 0;
 }

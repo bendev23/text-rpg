@@ -21,6 +21,25 @@
 
 using namespace std;
 
+vector<string> string_split(std::string input, char delim)
+  {
+    vector<string> result;
+    
+    auto lambda_split = [] (string &s, char delim, vector<string> &elements)
+      {
+        stringstream ss(s);
+        string item;
+    
+        while (getline(ss,item,delim))
+          elements.push_back(item);
+      
+        return elements;
+      };
+    
+    lambda_split(input,delim,result);
+    return result;
+  }
+
 int string_to_int(string input, bool &success)
   {
     int result;
