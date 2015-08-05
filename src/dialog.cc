@@ -1,8 +1,5 @@
-#ifndef DIALOGANSWER_H
-#define DIALOGANSWER_H
-
-/** \file dialoganswer.h
- * 
+/** \file dialog.cc
+ *
  */
 
 /*
@@ -20,14 +17,10 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "dialogstage.h"
+#include "dialog.h"
 
-class DialogAnswer
+using namespace std;
+  
+Dialog::Dialog()
   {
-    private:
-      string statement;
-      DialogStage* nextStage;
   }
-
-
-#endif

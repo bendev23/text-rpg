@@ -1,6 +1,0 @@
-#include "dialogstage.h"
-
-DialogStage::DialogStage()
-  {
-    
-  }

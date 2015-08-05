@@ -20,17 +20,32 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#define "dialogstage.h"
+#include "general.h"
+#include "dialog.h"
+
+class DialogStage;
+
+class DialogAnswer
+  {
+    public:
+      std::string statement;
+      DialogStage* nextStage;
+  };
+
+class DialogStage
+  {
+    public:
+      std::string statement;
+      std::vector<DialogAnswer> possible_answers;
+  };
 
 class Dialog
   {
     protected:
-      DialogStage stages[];
-  }
+      std::vector<DialogStage> stages;
 
-
-
-
-
+    public:
+      Dialog();
+  };
 
 #endif
