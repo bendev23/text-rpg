@@ -1,10 +1,11 @@
 CXX=c++
 CXX_FLAGS=-pedantic -Wall -std=c++11 -g -O2
+CXX_FLAGS_AFTER=-ldl
 
 SRC_DIR=src
 BIN_DIR=bin
 CPP_FILES := $(wildcard $(SRC_DIR)/*.cc)
-OBJ_FILES := $(addprefix $(SRC_DIR)/,$(notdir $(CPP_FILES:.cpp=.o)))
+OBJ_FILES := $(addprefix $(SRC_DIR)/,$(notdir $(CPP_FILES:.cc=.o)))
 
 UNAME := $(shell uname)
 ifeq ($(UNAME), Linux)
@@ -16,10 +17,10 @@ endif
 all: $(BIN)
 
 $(BIN): $(OBJ_FILES)
-	g++ $(CXX_FLAGS) -o $@ $^
+	$(CXX) $(CXX_FLAGS) -o $@ $^ $(CXX_FLAGS_AFTER)
 
-obj/%.o: src/%.cc
-	g++ $(CXX_FLAGS) -c -o $@ $<
+%.o: %.cc
+	$(CXX) $(CXX_FLAGS) -c -o $@ $< $(CXX_FLAGS_AFTER)
 
 run:
 	./bin/rpg

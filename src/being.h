@@ -24,6 +24,13 @@
 #include "attributes.h"
 #include "rpginstance.h"
 
+enum HumanoidStatus
+  {
+    HUMANOID_STATUS_NORMAL,
+    HUMANOID_STATUS_PROTECTED,
+    HUMANOID_STATUS_UNKILLABLE
+  };
+
 class Being
   {
     protected:
@@ -35,11 +42,10 @@ class Being
       Being();
   };
 
-enum HumanoidStatus
+class Race
   {
-    HUMANOID_STATUS_NORMAL,
-    HUMANOID_STATUS_PROTECTED,
-    HUMANOID_STATUS_UNKILLABLE
+    protected:
+      //Bonuses bonuses;
   };
 
 class Humanoid: public Being
