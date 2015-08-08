@@ -1,6 +1,6 @@
 CXX=c++
 CXX_FLAGS=-pedantic -Wall -std=c++11 -g -O2
-CXX_FLAGS_AFTER=-ldl
+CXX_FLAGS_AFTER=
 
 SRC_DIR=src
 BIN_DIR=bin
@@ -10,6 +10,7 @@ OBJ_FILES := $(addprefix $(SRC_DIR)/,$(notdir $(CPP_FILES:.cc=.o)))
 UNAME := $(shell uname)
 ifeq ($(UNAME), Linux)
 BIN=$(BIN_DIR)/rpg
+CXX_FLAGS_AFTER=-ldl
 else
 BIN=$(BIN_DIR)/rpg.exe
 endif
