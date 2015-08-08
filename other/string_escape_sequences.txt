@@ -1,0 +1,10 @@
+escape sequences usable in game strings:
+
+%n - player's name
+%g - player's gender
+%r - player's race name
+%l - player's location
+%d - time of day, like noon, night etc., TODO
+%y - time of year, TODO
+
+... TODO
