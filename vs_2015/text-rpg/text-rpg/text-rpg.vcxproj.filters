@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\chaiscript">
+      <UniqueIdentifier>{a301a53f-dfee-4ffd-84ad-e5b6b399f77e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\attributes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\being.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\general.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\rpginstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\scriptinterpreter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\texts_en.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\chaiscript.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\chaiscript_defines.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\chaiscript_stdlib.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\chaiscript_threading.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\utility\utility.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\language\chaiscript_algebraic.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\language\chaiscript_common.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\language\chaiscript_engine.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\language\chaiscript_eval.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\language\chaiscript_parser.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\language\chaiscript_prelude_docs.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\any.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\bad_boxed_cast.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\bind_first.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\bootstrap.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\bootstrap_stl.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\boxed_cast.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\boxed_cast_helper.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\boxed_number.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\boxed_value.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\callable_traits.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\dispatchkit.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\dynamic_object.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\dynamic_object_detail.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\exception_specification.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\function_call.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\function_call_detail.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\handle_return.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\operators.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\proxy_constructors.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\proxy_functions.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\proxy_functions_detail.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\register_function.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\type_conversions.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\type_info.hpp">
+      <Filter>Header Files\chaiscript</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\being.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dialog.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\game.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\general.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\main.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\rpginstance.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\scriptinterpreter.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
