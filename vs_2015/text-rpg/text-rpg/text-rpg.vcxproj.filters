@@ -147,6 +147,9 @@
     <ClInclude Include="..\..\..\src\chaiscript\dispatchkit\type_info.hpp">
       <Filter>Header Files\chaiscript</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\location.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\being.cc">
@@ -168,6 +171,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\scriptinterpreter.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\location.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

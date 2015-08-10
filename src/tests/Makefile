@@ -23,7 +23,7 @@ clean:
 	rm *.o
 
 %.o: %.cc
-	$(CXX) $(CXX_FLAGS) -c -o $@ $< $(CXX_FLAGS_AFTER); $(CXX) $(CXX_FLAGS) $@ -o ../../bin/$(basename $@) $(OBJ_FILES_PROJECT) $(CXX_FLAGS_AFTER)
+	$(CXX) $(CXX_FLAGS) -c -o $@ $< $(CXX_FLAGS_AFTER) && $(CXX) $(CXX_FLAGS) $@ -o ../../bin/$(basename $@) $(OBJ_FILES_PROJECT) $(CXX_FLAGS_AFTER)
 
 run:
 	./bin/rpg
