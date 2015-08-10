@@ -21,6 +21,8 @@
 */
 
 #include "general.h"
+#include "being.h"
+#include "location.h"
 #include "rapidxml/rapidxml.hpp"
 #include "rapidxml/rapidxml_print.hpp"
 
@@ -54,6 +56,9 @@ class Game
   
 class World: public NameableDescribable
   {
+    protected:
+      std::vector<Location> locations;
+      std::vector<Being> beings;
   };
 
 /**

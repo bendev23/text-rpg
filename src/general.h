@@ -135,4 +135,12 @@ class NameableDescribableIdentifiable:public Nameable, public Identifiable, publ
   {
   };
   
+class Location;  // forward declaration for Locatable
+  
+class Locatable
+  {
+    protected:
+      Location *location;
+  };
+  
 #endif
