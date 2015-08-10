@@ -28,6 +28,8 @@
 #include <sstream>
 #include <algorithm>
 #include <iterator>
+#include <fstream>
+#include <ctime>
 
 #include "texts_en.h"
 
@@ -45,6 +47,52 @@ float string_to_float(std::string input, bool &success);
 
 std::vector<std::string> string_split(std::string input, char delim=' ');
 
+/**
+ * Class used for logging events (normal messages and errors). The class
+ * uses static members to function and can be configured.
+ */
+
+class Logger
+  {
+    protected:
+      static bool overwrite_file;    ///< whether the log file should be overwritten of appended to
+      static bool enabled;           ///< whether logging is enabled
+      static std::ofstream log_file;
+      
+    public:
+      /**
+       * Opens given file for logging.
+       */
+      static bool open_log(std::string filename);
+      
+      /**
+       * Closes the currently opened log file.
+       */
+      static void close_log();
+      
+      /**
+       * Logs given message. If no file is opened for logging or
+       * logging is disabled, nothing happens.
+       */
+      static void log_message(std::string message);
+      
+      /**
+       * Same as log_message but marks the message as error in the log.
+       */
+      static void log_error(std::string message);
+      
+      /**
+       * Disables logging.
+       */
+      static void disable();
+      
+      /**
+       * Enables logging.
+       */
+      static void enable();
+  };
+
+  
 class Identifiable
   {
     protected:

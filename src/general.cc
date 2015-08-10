@@ -91,3 +91,47 @@ string Describable::get_description()
   {
     return this->description;
   }
+  
+bool Logger::overwrite_file = true;  // these need to be declared here because of linker
+bool Logger::enabled = true;       
+ofstream Logger::log_file;
+
+bool Logger::open_log(std::string filename)
+  {
+    ios_base::openmode mode = (ios_base::openmode) (ios::out | (Logger::overwrite_file ? 0 : ios::app));
+    Logger::log_file.open((const char*) filename.c_str(),mode);
+    return Logger::log_file.is_open();
+  }    
+
+void Logger::close_log()
+  {
+    Logger::log_file.close();
+  }
+  
+void Logger::log_message(std::string message)
+  {
+    if (!Logger::enabled | !Logger::log_file.is_open())
+      return;
+    
+    time_t current_time = time(0);       // get time now
+    struct tm* now = localtime(&current_time);
+    
+    Logger::log_file << now->tm_mday << "." << now->tm_mon << "." <<
+      (now->tm_year + 1900) << ", " << now->tm_hour << ":" << now->tm_min << ":" <<
+      now->tm_sec << ": " << message << endl;
+  }   
+
+void Logger::log_error(std::string message)
+  { 
+    Logger::log_message("ERROR: " + message);
+  }
+
+void Logger::disable()
+  {
+    Logger::enabled = false;
+  }
+  
+void Logger::enable()
+  {
+    Logger::enabled = true;
+  }
