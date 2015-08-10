@@ -23,5 +23,8 @@ $(BIN): $(OBJ_FILES)
 %.o: %.cc
 	$(CXX) $(CXX_FLAGS) -c -o $@ $< $(CXX_FLAGS_AFTER)
 
+tests:
+	cd $(SRC_DIR)/tests; $(MAKE) clean; $(MAKE)
+
 run:
 	./bin/rpg

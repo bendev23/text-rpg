@@ -91,7 +91,6 @@ class Logger
        */
       static void enable();
   };
-
   
 class Identifiable
   {
