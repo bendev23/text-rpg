@@ -23,9 +23,19 @@ using namespace std;
 
 Being::Being()
   {
-    cout << "Hello, I'm a being." << endl; // just testing, this class will be abstract later
   }
   
-Humanoid::Humanoid(): Being()
+Humanoid::Humanoid(HumanoidClass *humanoid_class): Being()
   {
+    this->set_class(humanoid_class);
+  }
+  
+string Humanoid::get_name()
+  {
+    return this->get_class()->get_name();
+  }
+  
+string Beast::get_name()
+  {
+    return this->get_class()->get_name();
   }

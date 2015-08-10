@@ -27,17 +27,27 @@ using namespace std;
 
 int main ()
 {
-  WorldFileParser world_parser;
-  world_parser.save(NULL,"test.xml");
+  HumanoidClass humanoid_class1,
+                humanoid_class2,
+                humanoid_class3;
   
-  Logger::log_message("Wqwqeqeq");  // should do nothing
-  Logger::open_log("log.txt");
-  Dialog test_dialog;
-  ScriptInterpreter script_interpreter;
-  CommandLineInterface interface;
-  Logger::log_message("test sasasa");
-  Logger::log_error("sasasadadasasa");
-  interface.write_message("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",true);
-  Logger::close_log();
+  Humanoid humanoid1(&humanoid_class1),
+           humanoid2(&humanoid_class2),
+           humanoid3(&humanoid_class3),
+           humanoid4(&humanoid_class3);
+  
+  humanoid_class1.set_id(1);
+  humanoid_class1.set_name("guard");
+  
+  humanoid_class2.set_id(2);
+  humanoid_class2.set_name("villager");
+  
+  humanoid_class3.set_id(3);
+  humanoid_class3.set_name("citizen");
+  
+  cout << humanoid1.get_name() << endl;
+  cout << humanoid2.get_name() << endl;
+  cout << humanoid3.get_name() << endl;
+  cout << humanoid4.get_name() << endl;
   return 0;
 }

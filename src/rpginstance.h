@@ -24,7 +24,7 @@
 #include "rpginstance.h"
 #include "being.h"
 
-class RPGClass
+class RPGClass: public NameableIdentifiable
   {
   };
 
@@ -71,8 +71,21 @@ class RPGInstance
       T *rpg_class;
 
     public:
-      void set_class(T *new_class);
-      T *get_class();
+      void set_class(T *new_class)
+        /* implementation of template class methods
+           has to be done in header file, do some
+           research */                                
+        {
+          this->rpg_class = new_class;
+        };
+        
+      T *get_class()
+        {
+          if (this->rpg_class == 0)
+            Logger::log_error("RPG class requested in RPG instance with no RPG class set.");
+          
+          return this->rpg_class;
+        };
   };
   
 #endif

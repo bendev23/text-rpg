@@ -48,7 +48,7 @@ class Race
       //Bonuses bonuses;
   };
 
-class Humanoid: public Being
+class Humanoid: public Being, public RPGInstance<HumanoidClass>
   {
     protected:
       BasicAttributes basic_attributes;
@@ -59,16 +59,32 @@ class Humanoid: public Being
       //Dialog* current_dialog; //(vkortelainen) Unclear if pointer or not.
       //ActivityPlan activity_plan;
     public:
-      Humanoid();
+      /**
+       * Initialises a new humanoid with given humanoid RPG class.
+       * 
+       * @param humanoid_class humanoid RPG class to assign to humanoid - every
+       *   humanoid must have a class assigned
+       */
+      
+      Humanoid(HumanoidClass *humanoid_class);
+      
+      /**
+       * Gets the name of the humanoid retrieved from its humanoid class.
+       */
+      virtual std::string get_name();
       
       int get_weight();
   };
   
 class Beast: public Being, public RPGInstance<BeingClass>
   {
+    /**
+     * Gets the name of the being retrieved from its being class.
+     */
+    virtual std::string get_name();
   };
   
-class Player: public Humanoid, public RPGInstance<HumanoidClass>
+class Player: public Humanoid
   {
   };
   

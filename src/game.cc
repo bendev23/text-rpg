@@ -219,7 +219,6 @@ void CommandLineInterface::write_table(vector<string> content, unsigned int colu
     
   }
   
-
 bool WorldFileParser::save(World *world, std::string filename)
   {
     xml_document<> document;     // testing code
