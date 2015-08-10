@@ -21,6 +21,8 @@
 */
 
 #include "general.h"
+#include "rapidxml/rapidxml.hpp"
+#include "rapidxml/rapidxml_print.hpp"
 
 /**
  * How long text will be aligned to the maximum
@@ -54,6 +56,29 @@ class World: public NameableDescribable
   {
   };
 
+/**
+ * Serves for saving/loading a World objects to/from (XML) files.
+ */
+  
+class WorldFileParser
+  {
+    public:
+      
+      /**
+       * Saves given World object to file.
+       * 
+       * @return true on success, false otherwise
+       */
+      bool save(World *world, std::string filename);
+      
+      /**
+       * Loads given World object from file.
+       * 
+       * @return true on success, false otherwise
+       */
+      bool load(World *world, std::string filename);
+  };
+  
 /**
  * Provides means of communication with the user and all communication with
  * the user must be done via this class.

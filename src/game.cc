@@ -20,7 +20,8 @@
 #include "game.h"
 
 using namespace std;
-  
+using namespace rapidxml;
+
 CommandLineInterface::CommandLineInterface()
   {
     this->line_length = DEFAULT_LINE_LENGTH;
@@ -216,4 +217,28 @@ void CommandLineInterface::write_table(vector<string> content, unsigned int colu
           }
       }
     
+  }
+  
+
+bool WorldFileParser::save(World *world, std::string filename)
+  {
+    xml_document<> document;     // testing code
+    xml_node<> *node = document.allocate_node(node_element, "a", "Google");
+    document.append_node(node);
+    xml_attribute<> *attr = document.allocate_attribute("href", "google.com");
+    node->append_attribute(attr);
+    
+    ofstream output_file;
+    output_file.open(filename);
+    output_file << document;
+    output_file.close();
+    
+    // TODO
+    return true;
+  }
+  
+bool WorldFileParser::load(World *world, std::string filename)
+  { 
+    // TODO
+    return true;
   }

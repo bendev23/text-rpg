@@ -27,6 +27,9 @@ using namespace std;
 
 int main ()
 {
+  WorldFileParser world_parser;
+  world_parser.save(NULL,"test.xml");
+  
   Logger::log_message("Wqwqeqeq");  // should do nothing
   Logger::open_log("log.txt");
   Dialog test_dialog;
