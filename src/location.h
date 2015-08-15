@@ -22,12 +22,49 @@
 
 #include "general.h"
 
+class Path;
+
 /**
  * Represents a game location.
  */
 
-class Location: public NameableDescribableIdentifiable
+class Location: public NameableDescribableIdentifiable, public DebugSerializable
   {
+    protected:
+      std::vector<Path> paths;
+      
+    public:
+      /**
+       * Connects this location to another one, i.e. creates a new path and stores it in this
+       * location.
+       * 
+       * @param name new path name
+       * @param destination destination, i.e. a location this location should be connected to
+       * @param length_km path length in kilometers
+       * @param bidirectional if true then a symmetrical path will be created and added to
+       *   destination path creating a bidirectional path, if false, only one (one-directional)
+       *   path will be created
+       */
+      
+      void create_path(std::string name, Location *destination, float length_km, bool bidirectional=true);
+      unsigned int get_number_of_paths();
+      virtual std::string debug_string(debug_string_flag flags=(debug_string_flag) 0);
+  };
+  
+class Path: public NameableIdentifiable, public DebugSerializable
+  {
+    protected:
+      Location *destination;
+      float length_km;
+      bool blocked;
+      
+    public:
+      Path();    
+      void set_destination(Location *destination);
+      Location *get_destination();
+      void set_length(float length_km);
+      float get_length();
+      virtual std::string debug_string(debug_string_flag flags=(debug_string_flag) 0);
   };
 
 #endif

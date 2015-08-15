@@ -62,6 +62,13 @@ float string_to_float(string input, bool &success)
     return (float) result;
   }
 
+string float_to_string(float input)
+  {
+    ostringstream buffer;
+    buffer << input;
+    return buffer.str();
+  }
+  
 void Identifiable::set_id(id_type new_id)
   {
     this->id = new_id;
