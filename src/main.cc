@@ -45,9 +45,9 @@ int main ()
   humanoid_class3.set_id(3);
   humanoid_class3.set_name("citizen");
   
-  cout << humanoid1.get_name() << endl;
-  cout << humanoid2.get_name() << endl;
-  cout << humanoid3.get_name() << endl;
-  cout << humanoid4.get_name() << endl;
+  cout << humanoid1.debug_string() << endl;
+  cout << humanoid2.debug_string() << endl;
+  cout << humanoid3.debug_string() << endl;
+  cout << humanoid4.debug_string() << endl;
   return 0;
 }

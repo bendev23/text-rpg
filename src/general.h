@@ -92,6 +92,27 @@ class Logger
       static void enable();
   };
   
+typedef enum
+  {
+    DEBUG_STRING_BRIEF = 0x01,     ///< brief debug string
+    DEBUG_STRING_LARGE = 0x02      ///< large debug string with a lot of info
+  } debug_string_flag;
+  
+/**
+ * Provides a method for retrieving a debug string for development purposes.
+ */
+  
+class DebugSerializable
+  {
+    public:
+      /**
+       * Returns a debug string. Optional flags can be provided to control
+       * what information the string will contain.
+       */
+      
+      virtual std::string debug_string(debug_string_flag flags=(debug_string_flag) 0)=0;
+  };
+  
 class Identifiable
   {
     protected:

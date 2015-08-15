@@ -48,7 +48,7 @@ class Race
       //Bonuses bonuses;
   };
 
-class Humanoid: public Being, public RPGInstance<HumanoidClass>
+class Humanoid: public Being, public RPGInstance<HumanoidClass>, public DebugSerializable
   {
     protected:
       BasicAttributes basic_attributes;
@@ -72,6 +72,7 @@ class Humanoid: public Being, public RPGInstance<HumanoidClass>
        * Gets the name of the humanoid retrieved from its humanoid class.
        */
       virtual std::string get_name();
+      virtual std::string debug_string(debug_string_flag flags=(debug_string_flag) 0);
       
       int get_weight();
   };

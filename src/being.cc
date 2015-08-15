@@ -39,3 +39,10 @@ string Beast::get_name()
   {
     return this->get_class()->get_name();
   }
+  
+string Humanoid::debug_string(debug_string_flag flags)
+  {
+    string result = "humanoid:\n";
+    result += "  name: " + this->get_name() + "\n";
+    return result;
+  }
