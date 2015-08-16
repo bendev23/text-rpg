@@ -18,36 +18,50 @@
 */
 
 #include "general.h"
-#include "being.h"
-#include "game.h"
-#include "dialog.h"
-#include "scriptinterpreter.h"
+// #include "being.h"
+// #include "game.h"
+// #include "dialog.h"
+// #include "scriptinterpreter.h"
+#include "attributes.h"
+
 
 using namespace std;
 
 int main ()
 {
-  HumanoidClass humanoid_class1,
-                humanoid_class2,
-                humanoid_class3;
+  BasicAttributeValues basic_attr(100, 30);
+
+  cout << basic_attr.getEnergy();
+  cout << basic_attr.getHealth();
+
+  basic_attr.setHealth(33);
+  basic_attr.setEnergy(100);
+
+  cout << basic_attr.getEnergy();
+  cout << basic_attr.getHealth();
+
   
-  Humanoid humanoid1(&humanoid_class1),
-           humanoid2(&humanoid_class2),
-           humanoid3(&humanoid_class3),
-           humanoid4(&humanoid_class3);
+  // HumanoidClass humanoid_class1,
+  //               humanoid_class2,
+  //               humanoid_class3;
   
-  humanoid_class1.set_id(1);
-  humanoid_class1.set_name("guard");
+  // Humanoid humanoid1(&humanoid_class1),
+  //          humanoid2(&humanoid_class2),
+  //          humanoid3(&humanoid_class3),
+  //          humanoid4(&humanoid_class3);
   
-  humanoid_class2.set_id(2);
-  humanoid_class2.set_name("villager");
+  // humanoid_class1.set_id(1);
+  // humanoid_class1.set_name("guard");
   
-  humanoid_class3.set_id(3);
-  humanoid_class3.set_name("citizen");
+  // humanoid_class2.set_id(2);
+  // humanoid_class2.set_name("villager");
   
-  cout << humanoid1.debug_string() << endl;
-  cout << humanoid2.debug_string() << endl;
-  cout << humanoid3.debug_string() << endl;
-  cout << humanoid4.debug_string() << endl;
+  // humanoid_class3.set_id(3);
+  // humanoid_class3.set_name("citizen");
+  
+  // cout << humanoid1.get_name() << endl;
+  // cout << humanoid2.get_name() << endl;
+  // cout << humanoid3.get_name() << endl;
+  // cout << humanoid4.get_name() << endl;
   return 0;
 }

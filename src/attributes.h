@@ -24,18 +24,43 @@ class BasicAttributeValues
   {
     protected:
       int current_health, current_energy;
+    public:
+      BasicAttributeValues();
+      BasicAttributeValues(int, int);
+      void setHealth(int);
+      void setEnergy(int);
+      int getHealth();
+      int getEnergy();
   };
 
 class BasicAttributes
   {
     protected:
       int max_health, max_energy, armor;
+    public:
+      BasicAttributes();
+      BasicAttributes(int,int,int);
+      void setMaxHealth(int);
+      void setMaxEnergy(int);
+      void setArmor();
+      int getMaxHealth();
+      int getMaxEnergy();
+      int getArmorValue();
   };
 
 class AdvancedAttributes
   {
     protected:
       int physical_strength, will_power, agility; //(vkortelainen) Some more might be added.
+    public:
+      AdvancedAttributes();
+      AdvancedAttributes(int,int,int);
+      void setStrength(int);
+      void setWillPower(int);
+      void setAgility(int);
+      int getStrength();
+      int getWillPower();
+      int getAgility();
   };
 
 #endif
