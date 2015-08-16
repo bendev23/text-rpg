@@ -22,6 +22,7 @@
 #include "game.h"
 #include "dialog.h"
 #include "scriptinterpreter.h"
+#include "attributes.h"
 
 using namespace std;
 
