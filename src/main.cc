@@ -26,28 +26,9 @@
 using namespace std;
 
 int main ()
-{
-  HumanoidClass humanoid_class1,
-                humanoid_class2,
-                humanoid_class3;
-  
-  Humanoid humanoid1(&humanoid_class1),
-           humanoid2(&humanoid_class2),
-           humanoid3(&humanoid_class3),
-           humanoid4(&humanoid_class3);
-  
-  humanoid_class1.set_id(1);
-  humanoid_class1.set_name("guard");
-  
-  humanoid_class2.set_id(2);
-  humanoid_class2.set_name("villager");
-  
-  humanoid_class3.set_id(3);
-  humanoid_class3.set_name("citizen");
-  
-  cout << humanoid1.debug_string() << endl;
-  cout << humanoid2.debug_string() << endl;
-  cout << humanoid3.debug_string() << endl;
-  cout << humanoid4.debug_string() << endl;
-  return 0;
-}
+  {
+    CommandLineInterface interface;
+    PlayerCommand command = interface.read_command();
+    cout << command.debug_string() << endl;
+    return 0;
+  }

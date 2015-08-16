@@ -22,6 +22,101 @@
 using namespace std;
 using namespace rapidxml;
 
+void PlayerCommand::set_type(player_command_type type)
+  {
+    this->type = type;
+  }
+
+player_command_type PlayerCommand::get_type()
+  {
+    return this->type;
+  }
+
+PlayerCommand::PlayerCommand()
+  {
+    this->type = PLAYER_COMMAND_UNKNOWN;
+  }
+  
+void PlayerCommand::add_int_parameter(int parameter)
+  {
+    this->int_parameters.push_back(parameter);
+  }
+
+void PlayerCommand::add_float_parameter(float parameter)
+  {
+    this->float_parameters.push_back(parameter);
+  }
+
+void PlayerCommand::add_string_parameter(string parameter)
+  {
+    this->string_parameters.push_back(parameter);
+  }
+      
+vector<int> *PlayerCommand::get_int_parameters()
+  {
+    return &this->int_parameters;
+  }
+
+vector<float> *PlayerCommand::get_float_parameters()
+  {
+    return &this->float_parameters;
+  }
+  
+vector<string> *PlayerCommand::get_string_parameters()
+  {
+    return &this->string_parameters;
+  }
+
+string PlayerCommand::debug_string(debug_string_flag flags)
+  {
+    string result = "command\n";
+    unsigned int i;
+    
+    string type_string;
+    
+    switch (this->type)
+      {
+        case PLAYER_COMMAND_GO:
+          type_string = "go";
+          break;
+          
+        case PLAYER_COMMAND_INSPECT:
+          type_string = "inspect";
+          break;
+          
+        case PLAYER_COMMAND_LOOK_AROUND:
+          type_string = "look around";
+          break;
+        
+        case PLAYER_COMMAND_ATTACK:
+          type_string = "attack";
+          break;
+          
+        case PLAYER_COMMAND_SCRIPT_COMMAND:
+          type_string = "script command";
+          break;
+        
+        case PLAYER_COMMAND_UNKNOWN:
+        default:
+          type_string = "unknown";
+          break;
+      }
+    
+    result += "  type: " + type_string + "\n";
+    result += "  parameters:\n";
+    
+    for (i = 0; i < this->int_parameters.size(); i++)
+      result += "    " + float_to_string(int_parameters[i]) + " (int)\n";
+      
+    for (i = 0; i < this->float_parameters.size(); i++)
+      result += "    " + float_to_string(float_parameters[i]) + " (float)\n";
+      
+    for (i = 0; i < this->string_parameters.size(); i++)
+      result += "    '" + string_parameters[i] + "' (string)\n";
+      
+    return result;
+  }
+  
 CommandLineInterface::CommandLineInterface()
   {
     this->line_length = DEFAULT_LINE_LENGTH;
@@ -240,4 +335,46 @@ bool WorldFileParser::load(World *world, std::string filename)
   { 
     // TODO
     return true;
+  }
+  
+int CommandLineInterface::string_begins_with(std::string input, std::string prefixes[], unsigned int prefixes_length)
+  {
+    unsigned int i;
+    
+    for (i = 0; i < prefixes_length; i++)
+      {
+        if (input.substr(0,prefixes[i].length()).compare(prefixes[i]) == 0)
+          return i;
+      }
+    
+    return -1;
+  }
+  
+PlayerCommand CommandLineInterface::read_command()
+  {
+    PlayerCommand result;
+    string command_strings[2];
+    
+    cout << STRING_PROMPT_COMMAND;
+    
+    string line;
+    getline(cin, line);
+    
+    command_strings[0] = STRING_PLAYER_COMMAND_GO;
+    command_strings[1] = STRING_PLAYER_COMMAND_GO2;
+    
+    if (this->string_begins_with(line,command_strings,2) >= 0)
+      result.set_type(PLAYER_COMMAND_GO);
+    
+    //TODO command parameters - how will the string parameters be separated? will spaces be allowed?
+    
+    command_strings[0] = STRING_PLAYER_COMMAND_LOOK_AROUND;
+    command_strings[1] = STRING_PLAYER_COMMAND_LOOK_AROUND2;
+    
+    if (this->string_begins_with(line,command_strings,2) >= 0)
+      result.set_type(PLAYER_COMMAND_LOOK_AROUND);
+    
+    // TODO the rest of the commands
+    
+    return result;
   }

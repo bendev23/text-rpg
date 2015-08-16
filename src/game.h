@@ -85,6 +85,52 @@ class WorldFileParser
   };
   
 /**
+ * Type of player command.
+ */
+  
+typedef enum
+  {
+    PLAYER_COMMAND_UNKNOWN,          ///< means an uknow command was entered
+    PLAYER_COMMAND_GO,               ///< go to another location
+    PLAYER_COMMAND_LOOK_AROUND,      ///< look around the current location
+    PLAYER_COMMAND_INSPECT,          ///< inspect something
+    PLAYER_COMMAND_ATTACK,           ///< attack something
+    PLAYER_COMMAND_SCRIPT_COMMAND    ///< enter a scripting language command
+    // more to come
+  } player_command_type;
+  
+/**
+ * Represents a command given by player via command line. A command has
+ * a type and parameters that are determined by the type.
+ */
+  
+class PlayerCommand: public DebugSerializable
+  {
+    protected:
+      player_command_type type;
+      std::vector<int> int_parameters;
+      std::vector<float> float_parameters;
+      std::vector<std::string> string_parameters;
+      
+    public:
+      PlayerCommand();      
+      void set_type(player_command_type type);
+      player_command_type get_type();
+      
+      /**
+       * Adds (pushes) an integer parameter.
+       */     
+      void add_int_parameter(int parameter);
+      void add_float_parameter(float parameter);
+      void add_string_parameter(std::string parameter);
+      
+      std::vector<int> *get_int_parameters();
+      std::vector<float> *get_float_parameters();
+      std::vector<std::string> *get_string_parameters();
+      virtual std::string debug_string(debug_string_flag flags=(debug_string_flag) 0);
+  };
+  
+/**
  * Provides means of communication with the user and all communication with
  * the user must be done via this class.
  */
@@ -95,6 +141,19 @@ class CommandLineInterface
       unsigned int line_length;           // a hint for the class, says how long one command-line line is
       TextAlignType text_align;
   
+      /**
+       * Tests if given string begins with any of given prefixes.
+       * 
+       * @param input input string to be tested for prefixes
+       * @param prefixes an array of strings - the prefixes to test
+       * @param prefixes_length length of prefixes array
+       * @return index of the first found prefix the input string
+       *   begins with or -1 if the input string doesn't begin with
+       *   any of given prefixes
+       */
+      
+      int string_begins_with(std::string input, std::string prefixes[], unsigned int prefixes_length);
+      
     public:
      CommandLineInterface();
       
@@ -169,6 +228,15 @@ class CommandLineInterface
        */
       
       unsigned int write_choice(std::vector<std::string> choices);
+      
+      /**
+       * Reads a player command and returns it.
+       * 
+       * @return PlayerCommand object representing the command entered. If 
+       *   wrong command is entered, the command type will be PLAYER_COMMAND_UNKNOWN.
+       */
+      
+      PlayerCommand read_command();
   };
   
 #endif

@@ -24,4 +24,11 @@
 #define STRING_PROMPT_FLOAT "Please enter a decimal number"
 #define STRING_INVALID_VALUE_ENTERED "You entered an invalid value."
 
+#define STRING_PROMPT_COMMAND "What will you do? "
+
+#define STRING_PLAYER_COMMAND_GO "go"
+#define STRING_PLAYER_COMMAND_GO2 "g"     // alternative, shorter version
+#define STRING_PLAYER_COMMAND_LOOK_AROUND "look around"
+#define STRING_PLAYER_COMMAND_LOOK_AROUND2 "la"
+
 #endif
