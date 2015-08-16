@@ -29,39 +29,30 @@ using namespace std;
 
 int main ()
 {
-  BasicAttributeValues basic_attr(100, 30);
 
-  cout << basic_attr.getEnergy();
-  cout << basic_attr.getHealth();
 
-  basic_attr.setHealth(33);
-  basic_attr.setEnergy(100);
+  HumanoidClass humanoid_class1,
+                humanoid_class2,
+                humanoid_class3;
 
-  cout << basic_attr.getEnergy();
-  cout << basic_attr.getHealth();
+  Humanoid humanoid1(&humanoid_class1),
+           humanoid2(&humanoid_class2),
+           humanoid3(&humanoid_class3),
+           humanoid4(&humanoid_class3);
 
-  
-  // HumanoidClass humanoid_class1,
-  //               humanoid_class2,
-  //               humanoid_class3;
-  
-  // Humanoid humanoid1(&humanoid_class1),
-  //          humanoid2(&humanoid_class2),
-  //          humanoid3(&humanoid_class3),
-  //          humanoid4(&humanoid_class3);
-  
-  // humanoid_class1.set_id(1);
-  // humanoid_class1.set_name("guard");
-  
-  // humanoid_class2.set_id(2);
-  // humanoid_class2.set_name("villager");
-  
-  // humanoid_class3.set_id(3);
-  // humanoid_class3.set_name("citizen");
-  
-  // cout << humanoid1.get_name() << endl;
-  // cout << humanoid2.get_name() << endl;
-  // cout << humanoid3.get_name() << endl;
-  // cout << humanoid4.get_name() << endl;
+  humanoid_class1.set_id(1);
+  humanoid_class1.set_name("guard");
+
+  humanoid_class2.set_id(2);
+  humanoid_class2.set_name("villager");
+
+  humanoid_class3.set_id(3);
+  humanoid_class3.set_name("citizen");
+
+  cout << humanoid1.get_name() << endl;
+  cout << humanoid2.get_name() << endl;
+  cout << humanoid3.get_name() << endl;
+  cout << humanoid4.get_name() << endl;
+
   return 0;
 }

@@ -27,28 +27,28 @@ BasicAttributeValues::BasicAttributeValues()
     current_energy = 0;
   }
 
-BasicAttributeValues::BasicAttributeValues(int p_current_health, int p_current_energy)
+BasicAttributeValues::BasicAttributeValues(int current_health, int current_energy)
   {
-    current_health = p_current_health;
-    current_energy = p_current_energy;
+    this->current_health = current_health;
+    this->current_energy = current_energy;
   }
 
-void BasicAttributeValues::setHealth(int p_health)
+void BasicAttributeValues::set_health(int health)
   {
-    current_health = p_health;
+    this->current_health = health;
   }
 
-void BasicAttributeValues::setEnergy(int p_energy)
+void BasicAttributeValues::set_energy(int energy)
   {
-    current_energy = p_energy;
+    this->current_energy = energy;
   }
 
-int BasicAttributeValues::getHealth()
+int BasicAttributeValues::get_health()
   {
     return current_health;
   }
 
-int BasicAttributeValues::getEnergy()
+int BasicAttributeValues::get_energy()
   {
     return current_energy;
   }
@@ -62,34 +62,34 @@ BasicAttributes::BasicAttributes()
     armor = 0;
   }
 
-BasicAttributes::BasicAttributes(int p_max_health, int p_max_energy,int p_armor)
+BasicAttributes::BasicAttributes(int max_health, int max_energy, int armor)
   {
-    max_health = p_max_health;
-    max_energy = p_max_energy;
-    armor = p_armor;
+    this->max_health = max_health;
+    this->max_energy = max_energy;
+    this->armor = armor;
   }
 
-void BasicAttributes::setMaxHealth(int p_health)
+void BasicAttributes::set_max_health(int health)
   {
-    max_health = p_health;
+    max_health = health;
   }
 
-void BasicAttributes::setMaxEnergy(int p_energy)
+void BasicAttributes::set_max_energy(int energy)
   {
-    max_energy = p_energy;
+    max_energy = energy;
   }
 
-int BasicAttributes::getMaxHealth()
+int BasicAttributes::get_max_health()
   {
     return max_health;
   }
 
-int BasicAttributes::getMaxEnergy()
+int BasicAttributes::get_max_energy()
   {
     return max_energy;
   }
 
-int BasicAttributes::getArmorValue()
+int BasicAttributes::get_armor_value()
   {
     return armor;
   }
@@ -103,34 +103,34 @@ AdvancedAttributes::AdvancedAttributes()
     agility  = 0;
   }
 
-AdvancedAttributes::AdvancedAttributes(int p_physical_strength, int p_will_power, int p_agility)
+AdvancedAttributes::AdvancedAttributes(int physical_strength, int will_power, int agility)
   {
-    physical_strength = p_physical_strength;
-    will_power = p_will_power;
-    agility  = p_agility;
+    this->physical_strength = physical_strength;
+    this->will_power = will_power;
+    this->agility = agility;
   }
 
-void AdvancedAttributes::setStrength(int p_strength)
+void AdvancedAttributes::set_strength(int strength)
   {
-    physical_strength = p_strength;
+    physical_strength = strength;
   }
 
-void AdvancedAttributes::setWillPower(int p_will_power)
+void AdvancedAttributes::set_will_power(int will_power)
   {
-    will_power = p_will_power;
+    this->will_power = will_power;
   }
 
-int AdvancedAttributes::getStrength()
+int AdvancedAttributes::get_strength()
   {
     return physical_strength;
   }
 
-int AdvancedAttributes::getWillPower()
+int AdvancedAttributes::get_will_power()
   {
     return will_power;
   }
 
-int AdvancedAttributes::getAgility()
+int AdvancedAttributes::get_agility()
   {
     return agility;
-   }
+  }

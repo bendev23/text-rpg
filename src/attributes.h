@@ -27,10 +27,10 @@ class BasicAttributeValues
     public:
       BasicAttributeValues();
       BasicAttributeValues(int, int);
-      void setHealth(int);
-      void setEnergy(int);
-      int getHealth();
-      int getEnergy();
+      void set_health(int);
+      void set_energy(int);
+      int get_health();
+      int get_energy();
   };
 
 class BasicAttributes
@@ -40,12 +40,12 @@ class BasicAttributes
     public:
       BasicAttributes();
       BasicAttributes(int,int,int);
-      void setMaxHealth(int);
-      void setMaxEnergy(int);
-      void setArmor();
-      int getMaxHealth();
-      int getMaxEnergy();
-      int getArmorValue();
+      void set_max_health(int);
+      void set_max_energy(int);
+      void set_armor();
+      int get_max_health();
+      int get_max_energy();
+      int get_armor_value();
   };
 
 class AdvancedAttributes
@@ -55,12 +55,12 @@ class AdvancedAttributes
     public:
       AdvancedAttributes();
       AdvancedAttributes(int,int,int);
-      void setStrength(int);
-      void setWillPower(int);
-      void setAgility(int);
-      int getStrength();
-      int getWillPower();
-      int getAgility();
+      void set_strength(int);
+      void set_will_power(int);
+      void set_agility(int);
+      int get_strength();
+      int get_will_power();
+      int get_agility();
   };
 
 #endif
