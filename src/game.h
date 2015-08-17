@@ -142,17 +142,18 @@ class CommandLineInterface
       TextAlignType text_align;
   
       /**
-       * Tests if given string begins with any of given prefixes.
+       * Tests if given string represents given command and if so, parses its parameters.
        * 
-       * @param input input string to be tested for prefixes
-       * @param prefixes an array of strings - the prefixes to test
-       * @param prefixes_length length of prefixes array
-       * @return index of the first found prefix the input string
-       *   begins with or -1 if the input string doesn't begin with
-       *   any of given prefixes
+       * @param input input string that should be tested
+       * @param command_versions array containing string versions of given command (such as ["go","g"])
+       * @param command_versions_length length of command_version array
+       * @param command pointer to PlayerCommand object that will be filled with parameters in case the
+       *   input string represented the command given by the strings in command_versions
+       * @return index to command_version array representing the string that was matched, or -1 if
+       *   no string from command_version was matched
        */
       
-      int string_begins_with(std::string input, std::string prefixes[], unsigned int prefixes_length);
+      int test_command(std::string input, std::string command_versions[], unsigned int command_versions_length, PlayerCommand *command);
       
     public:
      CommandLineInterface();
@@ -237,6 +238,12 @@ class CommandLineInterface
        */
       
       PlayerCommand read_command();
+      
+      /**
+       * Same as read_command but reads the command from given string, not from stdin.
+       */
+      
+      PlayerCommand read_command_from_string(std::string input);
   };
   
 #endif

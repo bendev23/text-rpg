@@ -337,33 +337,46 @@ bool WorldFileParser::load(World *world, std::string filename)
     return true;
   }
   
-int CommandLineInterface::string_begins_with(std::string input, std::string prefixes[], unsigned int prefixes_length)
+int CommandLineInterface::test_command(std::string input, std::string command_versions[], unsigned int command_versions_length, PlayerCommand *command)
   {
-    unsigned int i;
+    unsigned int index, helper;
+    bool matched;
     
-    for (i = 0; i < prefixes_length; i++)
-      {
-        if (input.substr(0,prefixes[i].length()).compare(prefixes[i]) == 0)
-          return i;
-      }
+    matched = false;
     
-    return -1;
+    for (index = 0; index < command_versions_length; index++)
+      if (input.substr(0,command_versions[index].length()).compare(command_versions[index]) == 0)
+        {
+          helper = command_versions[index].length();
+          
+          if (helper >= input.length() || input[helper] == ' ')  // there must be a space after the command
+            {
+              matched = true;
+              break;
+            }
+        }
+        
+    if (!matched)
+      return -1;
+        
+    string rest_of_the_string;
+    
+    rest_of_the_string = input.substr(command_versions[index].length());
+    
+    // TODO parse parameters here
+    
+    return index;
   }
   
-PlayerCommand CommandLineInterface::read_command()
+PlayerCommand CommandLineInterface::read_command_from_string(string input)
   {
     PlayerCommand result;
     string command_strings[2];
     
-    cout << STRING_PROMPT_COMMAND;
-    
-    string line;
-    getline(cin, line);
-    
     command_strings[0] = STRING_PLAYER_COMMAND_GO;
     command_strings[1] = STRING_PLAYER_COMMAND_GO2;
     
-    if (this->string_begins_with(line,command_strings,2) >= 0)
+    if (this->test_command(input,command_strings,2,&result) >= 0)
       result.set_type(PLAYER_COMMAND_GO);
     
     //TODO command parameters - how will the string parameters be separated? will spaces be allowed?
@@ -371,10 +384,20 @@ PlayerCommand CommandLineInterface::read_command()
     command_strings[0] = STRING_PLAYER_COMMAND_LOOK_AROUND;
     command_strings[1] = STRING_PLAYER_COMMAND_LOOK_AROUND2;
     
-    if (this->string_begins_with(line,command_strings,2) >= 0)
+    if (this->test_command(input,command_strings,2,&result) >= 0)
       result.set_type(PLAYER_COMMAND_LOOK_AROUND);
     
     // TODO the rest of the commands
     
     return result;
+  }
+  
+PlayerCommand CommandLineInterface::read_command()
+  {
+    cout << STRING_PROMPT_COMMAND;
+    
+    string line;
+    getline(cin, line);
+    
+    return this->read_command_from_string(line);
   }

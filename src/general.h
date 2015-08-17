@@ -30,7 +30,10 @@
 #include <iterator>
 #include <fstream>
 #include <ctime>
-#include <sstream>
+#include <sstream> 
+#include <functional> 
+#include <cctype>
+#include <locale>
 
 #include "texts_en.h"
 
@@ -42,6 +45,9 @@ typedef unsigned int id_type;
 int string_to_int(std::string input, bool &success);      // these functions exist because stoi and stof can't be used due to gcc bug on Windows
 float string_to_float(std::string input, bool &success);
 std::string float_to_string(float input);
+std::string string_trim_left(std::string input);
+std::string string_trim_right(std::string input);
+std::string string_trim(std::string input);
 
 /**
  * Splits given string by spaces.

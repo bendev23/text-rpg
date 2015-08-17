@@ -37,7 +37,34 @@ int main ()
         }
     }
     
-  cout << "OK" << endl;
+  cout << "testing trim functions..." << endl;
+    
+  string trimmed;
+  test_string = "  hello ";
+  
+  trimmed = string_trim_left(test_string);
+  
+  if (trimmed.compare("hello ") != 0)
+    {
+      cout << "ERROR: wrong left trim result: " << trimmed << endl;
+      return_code = 1;
+    }
+    
+  trimmed = string_trim_right(test_string);
+  
+  if (trimmed.compare("  hello") != 0)
+    {
+      cout << "ERROR: wrong right trim result: " << trimmed << endl;
+      return_code = 1;
+    }
+  
+  trimmed = string_trim(test_string);
+  
+  if (trimmed.compare("hello") != 0)
+    {
+      cout << "ERROR: wrong trim result: " << trimmed << endl;
+      return_code = 1;
+    }
   
   return return_code;
 }

@@ -40,6 +40,26 @@ vector<string> string_split(std::string input, char delim)
     return result;
   }
 
+string string_trim_left(string input)
+  {
+    // taken from http://stackoverflow.com/questions/216823/whats-the-best-way-to-trim-stdstring
+    input.erase(input.begin(), find_if(input.begin(), input.end(), not1(ptr_fun<int, int>(isspace))));
+    return input;
+  }
+  
+string string_trim_right(string input)
+  {
+    // taken from http://stackoverflow.com/questions/216823/whats-the-best-way-to-trim-stdstring
+    input.erase(find_if(input.rbegin(), input.rend(), not1(ptr_fun<int, int>(isspace))).base(), input.end());
+    return input;
+  }
+  
+string string_trim(string input)
+  {
+    // taken from http://stackoverflow.com/questions/216823/whats-the-best-way-to-trim-stdstring
+    return string_trim_left(string_trim_right(input));
+  }
+  
 int string_to_int(string input, bool &success)
   {
     int result;
