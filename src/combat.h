@@ -28,22 +28,24 @@ class CombatParticipant
   {
     private:
       Being* being;
-      CombatScene combat_scene;
-      CombatParticipant*[] allies;
-      CombatParticipant*[] enemies;
+      CombatScene* combat_scene;
+      CombatParticipant** allies;
+      CombatParticipant** enemies;
     public:
       CombatParticipant();
-      void set_allies(CombatParticipant*[]);
-      void set_enemies(CombatParticipant*[]);
+      void set_allies(CombatParticipant**);
+      void set_enemies(CombatParticipant**);
       void set_being(Being*);
+      void set_combat_scene(CombatScene*);
   };
 
 class CombatScene
   {
     private:
-      CombatParticipant[] participants;
+      CombatParticipant* participant;
     public:
       CombatScene();
+      void set_participant(CombatParticipant*);
   };
 
 

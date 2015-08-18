@@ -19,27 +19,39 @@
 
 #include "combat.h"
 
-CombatScene::CombatScene()
-  {
-    //nothing
-  }
-
 CombatParticipant::CombatParticipant()
   {
     //nothing
   }
 
-void CombatParticipant::set_allies(CombatParticipant* allies)
+void CombatParticipant::set_allies(CombatParticipant** allies)
   {
-    this->allies = allies;
+    allies = allies;
   }
 
-void CombatParticipant::set_enemies(CombatParticipant* enemies)
+void CombatParticipant::set_enemies(CombatParticipant** enemies)
   {
-    this->enemies = enemies;
+    enemies = enemies;
   }
 
 void CombatParticipant::set_being(Being* being)
   {
-    this->being = being;
+    being = being;
+  }
+
+void CombatParticipant::set_combat_scene(CombatScene* combat_scene)
+  {
+    combat_scene = combat_scene;
+  }
+
+// CombatScene definition
+
+CombatScene::CombatScene()
+  {
+    //nothing
+  }
+
+void CombatScene::set_participant(CombatParticipant* participant)
+  {
+    participant = participant;
   }
