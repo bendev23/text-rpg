@@ -7,6 +7,13 @@ Thumbs.db
 *.pch
 *.vspscc
 *_i.c
+*.h~
+*.h#
+*.h.gch
+*.c~
+*.c#
+*.cc~
+*.cc#
 *_p.c
 *.ncb
 *.suo
