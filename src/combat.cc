@@ -1,4 +1,4 @@
-/** \file combat.h
+/** \file combat.c
  *
  */
 
@@ -21,22 +21,11 @@
 
 CombatParticipant::CombatParticipant()
   {
-    //nothing
-  }
-
-void CombatParticipant::set_allies(CombatParticipant** allies)
-  {
-    allies = allies;
-  }
-
-void CombatParticipant::set_enemies(CombatParticipant** enemies)
-  {
-    enemies = enemies;
   }
 
 void CombatParticipant::set_being(Being* being)
   {
-    being = being;
+    this->being = being;
   }
 
 void CombatParticipant::set_combat_scene(CombatScene* combat_scene)
@@ -44,14 +33,6 @@ void CombatParticipant::set_combat_scene(CombatScene* combat_scene)
     combat_scene = combat_scene;
   }
 
-// CombatScene definition
-
 CombatScene::CombatScene()
   {
-    //nothing
-  }
-
-void CombatScene::set_participant(CombatParticipant* participant)
-  {
-    participant = participant;
   }
