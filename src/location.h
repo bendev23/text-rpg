@@ -25,6 +25,25 @@
 class Path;
 
 /**
+ * Location groups group locations together. They for also hierarchy, in
+ * which Location objects are the leaves.
+ */
+
+class LocationGroup: public NameableIdentifiable, public DebugSerializable
+  {
+    protected:
+      std::vector<Location *> locations;
+      LocationGroup *parent;
+      
+    public:
+      void add_location(Location *location);
+      void set_parent(LocationGroup *parent);
+      LocationGroup *get_parent();
+      std::vector<Location *> get_locations();
+      virtual std::string debug_string(debug_string_flag flags=(debug_string_flag) 0);
+  };
+
+/**
  * Represents a game location.
  */
 
@@ -32,8 +51,9 @@ class Location: public NameableDescribableIdentifiable, public DebugSerializable
   {
     protected:
       std::vector<Path> paths;
+      LocationGroup *group;         ///< group the location belongs to
       
-    public:
+    public:      
       /**
        * Connects this location to another one, i.e. creates a new path and stores it in this
        * location.
@@ -47,6 +67,25 @@ class Location: public NameableDescribableIdentifiable, public DebugSerializable
        */
       
       void create_path(std::string name, Location *destination, float length_km, bool bidirectional=true);
+      
+      /**
+       * Sets given LocationGroup as a group for this location.
+       * This location is NOT added to LocationGroups list of
+       * locations (for that use GroupLocation::add_location).
+       */
+      void set_group(LocationGroup *group);
+      
+      /**
+       * Gets location group of this location.
+       */
+      LocationGroup *get_group();
+      
+      /**
+       * Gets whole name of the location including its group name (so for example
+       * "The Island, east coast, forest" instead of just "forest"). 
+       */
+      std::string get_full_name();
+      
       unsigned int get_number_of_paths();
       virtual std::string debug_string(debug_string_flag flags=(debug_string_flag) 0);
   };

@@ -21,6 +21,78 @@
 
 using namespace std;
 
+void LocationGroup::add_location(Location *location)
+  {
+    if (location == 0)
+      {
+        Logger::log_error("Attempted to add null location to a group.");
+        return;
+      }
+    
+    location->set_group(this);
+    this->locations.push_back(location);
+  }
+  
+vector<Location *> LocationGroup::get_locations()
+  {
+    return this->locations;
+  }
+
+string Location::get_full_name()
+  {
+    LocationGroup *group_pointer = this->group;
+    string result = this->get_name();
+    
+    while (group_pointer != 0)
+      {
+        result = group_pointer->get_name() + ", " + result;
+        group_pointer = group_pointer->get_parent();
+      }
+    
+    return result;
+  }
+  
+string LocationGroup::debug_string(debug_string_flag flags)
+  {
+    unsigned int i;
+    string result = "location group\n";
+    result += "  name: " + this->get_name() + "\n";
+    result += "  parent: " + (this->parent == 0 ? "none" : this->parent->get_name()) + "\n";
+    result += "  locations: ";
+    
+    for (i = 0; i < this->locations.size(); i++)
+      {
+        result += this->locations[i]->get_name();
+        
+        if (i < this->locations.size() - 1)
+          result += ", ";
+      }
+        
+    result += "\n";
+      
+    return result;
+  }
+
+void LocationGroup::set_parent(LocationGroup *parent)
+  {
+    this->parent = parent;
+  }
+  
+void Location::set_group(LocationGroup *group)
+  {
+    this->group = group;
+  }
+
+LocationGroup *Location::get_group()
+  {
+    return this->group;
+  }
+
+LocationGroup *LocationGroup::get_parent()
+  {
+    return this->parent;
+  }
+  
 void Path::set_destination(Location *destination)
   {
     this->destination = destination;
