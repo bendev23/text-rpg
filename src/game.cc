@@ -401,3 +401,47 @@ PlayerCommand CommandLineInterface::read_command()
     
     return this->read_command_from_string(line);
   }
+  
+Location *World::create_location()
+  {
+    Location new_location;
+    this->locations.push_back(new_location);
+    return &this->locations[this->locations.size() - 1];
+  }
+  
+Humanoid *World::create_humanoid(HumanoidClass *humanoid_class)
+  {
+    Humanoid new_humanoid(humanoid_class);
+    this->humanoids.push_back(new_humanoid);
+    return (Humanoid *) &this->humanoids[this->humanoids.size() - 1];
+  }
+
+LocationGroup *World::create_location_group()
+  {
+    LocationGroup new_location_group;
+    this->location_groups.push_back(new_location_group);
+    return &this->location_groups[this->location_groups.size() - 1];
+  }
+
+string World::debug_string(debug_string_flag flags)
+  {
+    unsigned int i;
+    string result = "world\n";
+    
+    result += "  locations:\n";
+    
+    for (i = 0; i < this->locations.size(); i++)
+      result += "    " + float_to_string(this->locations[i].get_id()) + ": " + this->locations[i].get_name() + "\n";
+    
+    result += "  location groups:\n";
+    
+    for (i = 0; i < this->location_groups.size(); i++)
+      result += "    " + float_to_string(this->location_groups[i].get_id()) + ": " + this->location_groups[i].get_name() + "\n";
+    
+    result += "  humanoids:\n";
+      
+    for (i = 0; i < this->humanoids.size(); i++)
+      result += "    " + float_to_string(this->humanoids[i].get_id()) + ": " + this->humanoids[i].get_name() + "\n";
+    
+    return result;
+  }

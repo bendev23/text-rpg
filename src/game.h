@@ -54,11 +54,37 @@ class Game
  * methods for simulating the game world.
  */
   
-class World: public NameableDescribable
+class World: public NameableDescribable, public DebugSerializable
   {
     protected:
+      std::vector<LocationGroup> location_groups;
       std::vector<Location> locations;
-      std::vector<Being> beings;
+      /* there cannot be a vector<Being> beings, it causes errors because of object slicing in the vector,
+         but there can be vector<Being *> beings added */
+      std::vector<Humanoid> humanoids;               
+    public:
+      /**
+       * Creates a new location and stores it in internal location list.
+       * 
+       * @return pointer to newly created locaiton
+       */
+      Location *create_location();
+      
+      /**
+       * Creates a new humanoid and stores it in internal being list.
+       * 
+       * @param huamnoid_class RPG class for the new humanoid
+       * @return pointer to newly created humanoid
+       */
+      Humanoid *create_humanoid(HumanoidClass *humanoid_class);
+      
+      /**
+       * Creates a new location group and stores it in internal location group list.
+       * 
+       * @return pointer to newly created locaiton group
+       */     
+      LocationGroup *create_location_group();
+      virtual std::string debug_string(debug_string_flag flags=(debug_string_flag) 0);
   };
 
 /**

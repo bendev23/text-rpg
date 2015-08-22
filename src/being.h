@@ -31,7 +31,7 @@ enum HumanoidStatus
     HUMANOID_STATUS_UNKILLABLE
   };
 
-class Being
+class Being: public NameableIdentifiable
   {
     protected:
       int gender; //(vkortelainen) Do more than 2 genders exist within this game?

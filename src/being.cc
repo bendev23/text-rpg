@@ -21,7 +21,7 @@
 
 using namespace std;
 
-Being::Being()
+Being::Being(): NameableIdentifiable()
   {
   }
   
