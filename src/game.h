@@ -62,6 +62,32 @@ class World: public NameableDescribable, public DebugSerializable
       /* there cannot be a vector<Being> beings, it causes errors because of object slicing in the vector,
          but there can be vector<Being *> beings added */
       std::vector<Humanoid> humanoids;               
+      std::vector<Beast> beasts;
+    
+      /**
+       * Gets pointer to item from a list identified by its id.
+       * 
+       * @param input_vector vector of given class objects, the class must
+       *   be a subclass of Identifiable so the id can be retrieved
+       * @param id id to be searched for
+       * @return pointer to item with given id or 0 if no object with given id
+       *   was found
+       */
+      
+      template<typename T>
+      T *get_pointer_by_id(std::vector<T> *input_vector, id_type id)  
+        /* Templated functions must be defined inside headers, later we can possibly
+           move this into separate file and include it right here. */
+        {
+          unsigned int i;
+    
+          for (i = 0; i < input_vector->size(); i++)
+            if ((*input_vector)[i].get_id() == id)
+              return &(*input_vector)[i];
+        
+          return 0;
+        }
+      
     public:
       /**
        * Creates a new location and stores it in internal location list.
@@ -85,6 +111,10 @@ class World: public NameableDescribable, public DebugSerializable
        */     
       LocationGroup *create_location_group();
       virtual std::string debug_string(debug_string_flag flags=(debug_string_flag) 0);
+  
+      Location *get_location_by_id(id_type id);
+      Humanoid *get_humanoid_by_id(id_type id);
+      // TODO: add rest of get_x_by_id
   };
 
 /**

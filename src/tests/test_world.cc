@@ -2,10 +2,21 @@
 
 using namespace std;
 
+int return_code = 0;
+ 
+void check_condition(bool condition)
+  {
+    if (condition)
+      cout << "OK" << endl;
+    else
+      {
+        cout << "Error!" << endl;
+        return_code = 1;
+      }      
+  }
+
 int main ()
 {
-  int return_code = 0;
- 
   World world;
   
   // create some locations:
@@ -56,7 +67,19 @@ int main ()
   
   cout << world.debug_string() << endl;
   
-  // TODO: actual testing
+  cout << "testing getting by id:" << endl;
+  string name;
+  
+  name = world.get_location_by_id(2)->get_name();
+  check_condition(name.compare("city") == 0);
+  
+  name = world.get_location_by_id(1)->get_name();
+  check_condition(name.compare("village") == 0);
+  
+  check_condition(world.get_location_by_id(1000) == 0);
+  
+  name = world.get_humanoid_by_id(4)->get_name();
+  check_condition(name.compare("just another humanoid") == 0);
   
   return return_code;
 }

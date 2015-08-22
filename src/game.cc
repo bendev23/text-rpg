@@ -445,3 +445,13 @@ string World::debug_string(debug_string_flag flags)
     
     return result;
   }
+  
+Location *World::get_location_by_id(id_type id)
+  {
+    return this->get_pointer_by_id<Location>(&this->locations,id);
+  }
+  
+Humanoid *World::get_humanoid_by_id(id_type id)
+  {
+    return this->get_pointer_by_id<Humanoid>(&this->humanoids,id);
+  }
