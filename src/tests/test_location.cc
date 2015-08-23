@@ -1,10 +1,11 @@
 #include "../location.h"
+#include "test_helper.h"
 
 using namespace std;
 
 int main ()
 {
-  int return_code = 0;
+  TestHelper test_helper;
  
   Location location1, location2, location3, location4, location5;
   
@@ -30,35 +31,12 @@ int main ()
   cout << location4.debug_string() << endl;
   cout << location5.debug_string() << endl;
   
-  if (location1.get_number_of_paths() != 3)
-    {
-      cout << "ERROR: wrong number of paths in 'city'." << endl;
-      return_code = 1;
-    }
-    
-  if (location2.get_number_of_paths() != 3)
-    {
-      cout << "ERROR: wrong number of paths in 'village'." << endl;
-      return_code = 1;
-    }
-    
-  if (location3.get_number_of_paths() != 4)
-    {
-      cout << "ERROR: wrong number of paths in 'forest'." << endl;
-      return_code = 1;
-    }
-    
-  if (location4.get_number_of_paths() != 1)
-    {
-      cout << "ERROR: wrong number of paths in 'beach'." << endl;
-      return_code = 1;
-    }
-    
-  if (location5.get_number_of_paths() != 2)
-    {
-      cout << "ERROR: wrong number of paths in 'plains'." << endl;
-      return_code = 1;
-    }
+  test_helper.check_condition(location1.get_number_of_paths() == 3,"location 1, # of paths == 3?");
+  test_helper.check_condition(location2.get_number_of_paths() == 3,"location 2, # of paths == 3?");
+  test_helper.check_condition(location3.get_number_of_paths() == 4,"location 3, # of paths == 4?");
+  test_helper.check_condition(location4.get_number_of_paths() == 1,"location 4, # of paths == 1?");
+  test_helper.check_condition(location5.get_number_of_paths() == 2,"location 5, # of paths == 2?");
   
-  return return_code;
+  test_helper.print();
+  return test_helper.get_exit_code();
 }

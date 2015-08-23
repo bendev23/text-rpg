@@ -1,10 +1,9 @@
 #include "../location.h"
-
-using namespace std;
+#include "test_helper.h"
 
 int main ()
 {
-  int return_code = 0;
+  TestHelper test_helper;
  
   Location location1, location2, location3, location4, location5;
   LocationGroup group1, group2, group3, group4;
@@ -51,48 +50,24 @@ int main ()
   
   name = location1.get_full_name();
   cout << name << endl;
-  
-  if (name.compare("island, east coast, civilised area, city") != 0)
-    {
-      cout << "Error: the name doesn't match." << endl;
-      return_code = 1;
-    }
+  test_helper.check_condition(name.compare("island, east coast, civilised area, city") == 0,"location 1, full name");
     
   name = location2.get_full_name();
   cout << name << endl;
-  
-  if (name.compare("island, east coast, civilised area, village") != 0)
-    {
-      cout << "Error: the name doesn't match." << endl;
-      return_code = 1;
-    }
+  test_helper.check_condition(name.compare("island, east coast, civilised area, village") == 0,"location 2, full name");
   
   name = location3.get_full_name();
   cout << name << endl;
-  
-  if (name.compare("island, east coast, forest") != 0)
-    {
-      cout << "Error: the name doesn't match." << endl;
-      return_code = 1;
-    }
+  test_helper.check_condition(name.compare("island, east coast, forest") == 0,"location 3, full name");
   
   name = location4.get_full_name();
   cout << name << endl;
-  
-  if (name.compare("island, west coast, beach") != 0)
-    {
-      cout << "Error: the name doesn't match." << endl;
-      return_code = 1;
-    }
+  test_helper.check_condition(name.compare("island, west coast, beach") == 0,"location 4, full name");
   
   name = location5.get_full_name();
   cout << name << endl;
+  test_helper.check_condition(name.compare("island, west coast, plains") == 0,"location 5, full name");
   
-  if (name.compare("island, west coast, plains") != 0)
-    {
-      cout << "Error: the name doesn't match." << endl;
-      return_code = 1;
-    }
-  
-  return return_code;
+  test_helper.print();
+  return test_helper.get_exit_code();
 }

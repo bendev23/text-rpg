@@ -1,10 +1,9 @@
+#include "test_helper.h"
 #include "../general.h"
-
-using namespace std;
 
 int main ()
 {
-  int return_code = 0;
+  TestHelper test_helper;
  
   vector<string> result;
 
@@ -13,58 +12,27 @@ int main ()
   cout << test_string << endl;
   result = string_split(test_string);
   
-  if (result.size() != 5)
-    {
-      cout << "ERROR: wrong result size" << endl;
-      return_code = 1;
-    }
-  else
-    {
-      cout << result[0] << endl;
-      cout << result[1] << endl;
-      cout << result[2] << endl;
-      cout << result[3] << endl;
-      cout << result[4] << endl;
-      
-      if (result[0].compare("hello,") != 0 ||
-          result[1].compare("this") != 0 ||
-          result[2].compare("is") != 0 ||
-          result[3].compare("a") != 0 ||
-          result[4].compare("test.") != 0)
-        {
-          cout << "ERROR: wrong result content" << endl;
-          return_code = 1;
-        }
-    }
+  test_helper.check_condition(result.size() == 5,"split size == 5?");
+  test_helper.check_condition(result[0].compare("hello,") == 0,"split[0] == 'hello,'?");
+  test_helper.check_condition(result[1].compare("this") == 0,"split[1] == 'this'?");
+  test_helper.check_condition(result[2].compare("is") == 0,"split[2] == 'is'?");
+  test_helper.check_condition(result[3].compare("a") == 0,"split[3] == 'a'?");
+  test_helper.check_condition(result[4].compare("test.") == 0,"split[4] == 'test.'?");
     
   cout << "testing trim functions..." << endl;
-    
+  
   string trimmed;
   test_string = "  hello ";
   
   trimmed = string_trim_left(test_string);
+  test_helper.check_condition(trimmed.compare("hello ") == 0,"trim left == 'hello '?");
   
-  if (trimmed.compare("hello ") != 0)
-    {
-      cout << "ERROR: wrong left trim result: " << trimmed << endl;
-      return_code = 1;
-    }
-    
   trimmed = string_trim_right(test_string);
-  
-  if (trimmed.compare("  hello") != 0)
-    {
-      cout << "ERROR: wrong right trim result: " << trimmed << endl;
-      return_code = 1;
-    }
+  test_helper.check_condition(trimmed.compare("  hello") == 0,"trim right == '  hello'?");
   
   trimmed = string_trim(test_string);
+  test_helper.check_condition(trimmed.compare("hello") == 0,"trim == 'hello'?");
   
-  if (trimmed.compare("hello") != 0)
-    {
-      cout << "ERROR: wrong trim result: " << trimmed << endl;
-      return_code = 1;
-    }
-  
-  return return_code;
+  test_helper.print();
+  return test_helper.get_exit_code();
 }

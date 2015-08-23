@@ -2,15 +2,15 @@
 #include "../being.h"
 #include "../game.h"
 #include "../dialog.h"
-
-using namespace std;
+#include "test_helper.h"
 
 int main ()
 {
+  TestHelper test_helper;
+  
   /* assign RPG classes to humanoids and see if they return
      appropriate names */
   
-  int return_code = 0;
   HumanoidClass humanoid_class1,
                 humanoid_class2,
                 humanoid_class3;
@@ -34,18 +34,11 @@ int main ()
   string name3 = humanoid3.get_name();
   string name4 = humanoid4.get_name();
   
-  cout << name1 << endl << name2 << endl << name3 << endl << name4 << endl;
+  test_helper.check_condition(name1.compare("guard") == 0,"name 1 == 'guard'?");
+  test_helper.check_condition(name2.compare("villager") == 0,"name 2 == 'villager'?");
+  test_helper.check_condition(name3.compare("citizen") == 0,"name 3 == 'citizen'?");
+  test_helper.check_condition(name4.compare("citizen") == 0,"name 4 == 'citizen'?");
   
-  if (name1.compare("guard") == 0 &&
-      name2.compare("villager") == 0 &&
-      name3.compare("citizen") == 0 &&
-      name4.compare("citizen") == 0)
-    cout << "OK" << endl;
-  else
-    {
-      cout << "ERROR" << endl;
-      return_code = 1;
-    }
-  
-  return return_code;
+  test_helper.print();
+  return test_helper.get_exit_code();
 }
